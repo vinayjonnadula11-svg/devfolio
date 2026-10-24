@@ -9,15 +9,21 @@ pipeline {
             }
         }
 
+        stage('Check Docker') {
+            steps {
+                bat '"C:\\Users\\jonna\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" version'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t devfolio:%BUILD_NUMBER% .'
+                bat '"C:\\Users\\jonna\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t devfolio:%BUILD_NUMBER% .'
             }
         }
 
         stage('Verify Docker Image') {
             steps {
-                bat 'docker images devfolio'
+                bat '"C:\\Users\\jonna\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" images devfolio'
             }
         }
     }
